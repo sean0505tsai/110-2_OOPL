@@ -11,12 +11,9 @@ bool Guess(int number) {
 		target = rand() % 100 + 1;
 	}
 
-	if (number == target) {
-		std::cout << "Correct !!";
-		target = -1;
+	if (number == target)
 		return true;
-	}
-	else std::cout << "Wrong" << std::endl;
+
 	return false;
 }
 
