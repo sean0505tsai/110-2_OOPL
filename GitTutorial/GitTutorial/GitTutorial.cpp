@@ -12,7 +12,7 @@ bool Guess(int number) {
 		target = rand() % 100 + 1;
 	}
 
-<<<<<<< HEAD
+
 	if (number == target)
 	{
 		std::cout <<
@@ -22,7 +22,7 @@ bool Guess(int number) {
 	else if (number > target) std::cout << "Smaller" << std::endl;
 	else if (number < target) std::cout << "Bigger" << std::endl;
 	return false;
-=======
+
 	if(number>target){
 		std::cout<<"Smaller"<<std::endl;
 		return false;
@@ -32,7 +32,7 @@ bool Guess(int number) {
 		return false;
 	}
 	return true;
->>>>>>> ab277f522a9f743add8b81f8c6d031e787f28f05
+
 }
 
 int main()
