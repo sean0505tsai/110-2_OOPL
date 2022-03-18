@@ -232,6 +232,8 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	//
 	// SetCursor(AfxGetApp()->LoadCursor(IDC_GAMECURSOR));
 	//
+	practice.SetTopLeft(10, 10);						// 練習
+	// 
 	// 移動背景圖的座標
 	//
 	if (background.Top() > SIZE_Y)
@@ -285,6 +287,9 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 		ball[i].LoadBitmap();								// 載入第i個球的圖形
 	eraser.LoadBitmap();
 	background.LoadBitmap(IDB_BACKGROUND);					// 載入背景的圖形
+
+	practice.LoadBitmap(IDB_TITLE, RGB(255, 255, 255));							//練習用
+
 	//
 	// 完成部分Loading動作，提高進度
 	//
@@ -387,5 +392,7 @@ void CGameStateRun::OnShow()
 	corner.ShowBitmap();
 	corner.SetTopLeft(SIZE_X-corner.Width(), SIZE_Y-corner.Height());
 	corner.ShowBitmap();
+
+	practice.ShowBitmap();				// 練習
 }
 }
