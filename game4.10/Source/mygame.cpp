@@ -86,6 +86,40 @@ void CGameStateInit::OnInit()
 	//
 }
 
+CGameMap::CGameMap()
+	:X(20), Y(40), MW(120), MH(100)
+{
+	int map_init[4][5] = { {0, 0, 1, 0, 0},
+							{0, 1, 2, 1, 0},
+							{1, 2, 1, 2, 1},
+							{2, 1, 2, 1, 2} };
+
+	for (int i = 0; i < 4; i++)
+		for (int j = 0; j < 5; j++)
+			map[i][j] = map_init[i][j];
+}
+
+void CGameMap::LoadBitMap()
+{
+	blue.LoadBitmap(IDB_BLUE);
+	green.LoadBitmap(IDB_GREEN);
+}
+
+void CGameMap::Onshow()
+{
+	for(int i = 0; i < 5; i++)
+		for (int j = 0; j < 4; j++){
+			switch (map[i][j]) {
+			case 0:
+				break;
+			case 1:
+				blue.SetTopLeft(X + (MW * i), Y + (MW * j));
+				blue.ShowBitmap();
+			}
+		}
+}
+
+
 void CGameStateInit::OnBeginState()
 {
 }
