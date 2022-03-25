@@ -108,6 +108,8 @@ IDB_MAIN_CHARACTER      BITMAP                  "..\\res\\bitmap3.bmp"
 
 IDB_TITLE               BITMAP                  "C:\\Users\\user\\Documents\\Code\\OOPL\\110-2_OOPL\\game4.10\\RES\\3005630-middle.bmp"
 
+IDB_BITMAP3             BITMAP                  "..\\res\\bmp00001.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

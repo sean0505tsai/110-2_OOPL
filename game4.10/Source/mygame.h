@@ -53,6 +53,18 @@ namespace game_framework {
 		AUDIO_NTUT				// 2
 	};
 
+	class CPractice {
+	public:
+		CPractice();
+		void LoadBitMap();
+		void OnMove();
+		void OnShow();
+	private:
+		CMovingBitmap pic;
+		int x, y;
+	};
+
+
 	/////////////////////////////////////////////////////////////////////////////
 	// 這個class為遊戲的遊戲開頭畫面物件
 	// 每個Member function的Implementation都要弄懂
@@ -102,6 +114,8 @@ namespace game_framework {
 		CInteger		hits_left;	// 剩下的撞擊數
 		CBouncingBall   bball;		// 反覆彈跳的球
 		CMovingBitmap	practice;
+		CPractice		c_practice;
+		int				picX, picY;
 
 	};
 

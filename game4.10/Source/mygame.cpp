@@ -130,6 +130,31 @@ void CGameStateInit::OnShow()
 	CDDraw::ReleaseBackCDC();					// 放掉 Back Plain 的 CDC
 }								
 
+CPractice::CPractice()
+{
+	x = y = 0;
+}
+
+void CPractice::OnMove()
+{
+	if (y <= SIZE_Y) {
+		x += 3;
+		y += 3;
+	}
+	else {
+		x = y = 0;
+	}
+}
+
+void CPractice::LoadBitMap() {
+	pic.LoadBitmap(IDB_MAIN_CHARACTER);
+}
+
+void CPractice::OnShow()
+{
+	pic.SetTopLeft(x, y);
+	pic.ShowBitmap();
+}
 /////////////////////////////////////////////////////////////////////////////
 // 這個class為遊戲的結束狀態(Game Over)
 /////////////////////////////////////////////////////////////////////////////
@@ -191,6 +216,7 @@ CGameStateRun::CGameStateRun(CGame *g)
 : CGameState(g), NUMBALLS(28)
 {
 	ball = new CBall [NUMBALLS];
+	picX = picY = 0;
 }
 
 CGameStateRun::~CGameStateRun()
@@ -232,13 +258,27 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	//
 	// SetCursor(AfxGetApp()->LoadCursor(IDC_GAMECURSOR));
 	//
-	practice.SetTopLeft(10, 10);						// 練習
-	// 
 	// 移動背景圖的座標
 	//
 	if (background.Top() > SIZE_Y)
 		background.SetTopLeft(60 ,-background.Height());
 	background.SetTopLeft(background.Left(),background.Top()+1);
+
+	c_practice.OnMove();
+
+	// practice.SetTopLeft(10, 10);
+	if (picX <= SIZE_Y)
+	{
+		picX += 5;
+		picY += 5;
+	}
+	else
+	{
+		picX = picY = 0;
+	}
+	practice.SetTopLeft(picX, picY);
+
+
 	//
 	// 移動球
 	//
@@ -288,7 +328,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	eraser.LoadBitmap();
 	background.LoadBitmap(IDB_BACKGROUND);					// 載入背景的圖形
 
-	practice.LoadBitmap(IDB_TITLE, RGB(255, 255, 255));							//練習用
+	practice.LoadBitmap(IDB_MAIN_CHARACTER, RGB(255, 255, 255));							//練習用
 
 	//
 	// 完成部分Loading動作，提高進度
@@ -302,7 +342,8 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	corner.LoadBitmap(IDB_CORNER);							// 載入角落圖形
 	corner.ShowBitmap(background);							// 將corner貼到background
 	bball.LoadBitmap();										// 載入圖形
-	hits_left.LoadBitmap();									
+	hits_left.LoadBitmap();			
+	c_practice.LoadBitMap();
 	CAudio::Instance()->Load(AUDIO_DING,  "sounds\\ding.wav");	// 載入編號0的聲音ding.wav
 	CAudio::Instance()->Load(AUDIO_LAKE,  "sounds\\lake.mp3");	// 載入編號1的聲音lake.mp3
 	CAudio::Instance()->Load(AUDIO_NTUT,  "sounds\\ntut.mid");	// 載入編號2的聲音ntut.mid
@@ -385,6 +426,7 @@ void CGameStateRun::OnShow()
 		ball[i].OnShow();				// 貼上第i號球
 	bball.OnShow();						// 貼上彈跳的球
 	eraser.OnShow();					// 貼上擦子
+	c_practice.OnShow();
 	//
 	//  貼上左上及右下角落的圖
 	//
