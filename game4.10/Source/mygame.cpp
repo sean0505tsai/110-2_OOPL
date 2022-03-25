@@ -328,7 +328,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	eraser.LoadBitmap();
 	background.LoadBitmap(IDB_BACKGROUND);					// 載入背景的圖形
 
-	practice.LoadBitmap(IDB_MAIN_CHARACTER, RGB(255, 255, 255));							//練習用
+	practice.LoadBitmap(IDB_MAIN_CHARACTER, RGB(255, 0, 0));							//練習用
 
 	//
 	// 完成部分Loading動作，提高進度
