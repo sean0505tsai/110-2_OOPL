@@ -64,6 +64,19 @@ namespace game_framework {
 		int x, y;
 	};
 
+	class CGameMap{
+	public:
+		CGameMap();
+		void LoadBitMap();		// 載入地圖
+		void Onshow();
+	protected:
+		CMovingBitmap blue, green;
+		int map[4][5];			// 地圖矩陣index
+		const int X, Y;			// 大地圖左上角x, y座標
+		const int MW, MH;
+
+	};
+
 
 	/////////////////////////////////////////////////////////////////////////////
 	// 這個class為遊戲的遊戲開頭畫面物件
