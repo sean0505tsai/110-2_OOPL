@@ -53,29 +53,6 @@ namespace game_framework {
 		AUDIO_NTUT				// 2
 	};
 
-	class CPractice {
-	public:
-		CPractice();
-		void LoadBitMap();
-		void OnMove();
-		void OnShow();
-	private:
-		CMovingBitmap pic;
-		int x, y;
-	};
-
-	class CGameMap{
-	public:
-		CGameMap();
-		void LoadBitMap();		// 載入地圖
-		void Onshow();
-	protected:
-		CMovingBitmap blue, green;
-		int map[4][5];			// 地圖矩陣index
-		const int X, Y;			// 大地圖左上角x, y座標
-		const int MW, MH;
-
-	};
 
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -128,6 +105,7 @@ namespace game_framework {
 		CBouncingBall   bball;		// 反覆彈跳的球
 		CMovingBitmap	practice;
 		CPractice		c_practice;
+		CMovingBitmap	character;	// 角色
 		int				picX, picY;
 
 	};
