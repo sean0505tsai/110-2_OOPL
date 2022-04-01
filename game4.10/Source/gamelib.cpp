@@ -377,6 +377,17 @@ void CMovingBitmap::SetTopLeft(int x, int y)
 	location.right -= dx;
 	location.bottom -= dy;
 }
+void CMovingBitmap::SetBottomLeft(int x, int y)
+{
+	GAME_ASSERT(isBitmapLoaded, "A bitmap must be loaded before SetTopLeft() is called !!!");
+	y = 480 - y;
+	int dx = location.left - x;
+	int dy = location.bottom - y;
+	location.left = x;
+	location.bottom = y;
+	location.right -= dx;
+	location.top -= dy;
+}
 
 void CMovingBitmap::ShowBitmap()
 {
