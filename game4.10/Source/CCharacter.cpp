@@ -31,7 +31,7 @@ namespace game_framework {
 		return x + animation.Width();
 	}
 
-	int CCharacter::GetY2()
+	int CCharacter::GetY2()		// return 右下角y座標
 	{
 		return y + animation.Height();
 	}
@@ -63,38 +63,31 @@ namespace game_framework {
 			x -= STEP_SIZE;
 		if (isMovingRight)
 			x += STEP_SIZE;
-		if (isMovingUp)
-			y -= STEP_SIZE;
-		if (isMovingDown)
-			y += STEP_SIZE;
+		
+		// 跳躍動作待做
 	}
 
-	void CEraser::SetMovingDown(bool flag)
-	{
-		isMovingDown = flag;
-	}
-
-	void CEraser::SetMovingLeft(bool flag)
+	void CCharacter::SetMovingLeft(bool flag)
 	{
 		isMovingLeft = flag;
 	}
 
-	void CEraser::SetMovingRight(bool flag)
+	void CCharacter::SetMovingRight(bool flag)
 	{
 		isMovingRight = flag;
 	}
 
-	void CEraser::SetMovingUp(bool flag)
+	void CCharacter::SetJump(bool flag, int initial_velocity)
 	{
 		isMovingUp = flag;
 	}
 
-	void CEraser::SetXY(int nx, int ny)
+	void CCharacter::SetXY(int nx, int ny)
 	{
 		x = nx; y = ny;
 	}
 
-	void CEraser::OnShow()
+	void CCharacter::OnShow()
 	{
 		animation.SetTopLeft(x, y);
 		animation.OnShow();

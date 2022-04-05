@@ -20,13 +20,20 @@ namespace game_framework {
 		void SetMovingLeft(bool flag);	// 設定是否正在往左移動
 		void SetMovingRight(bool flag); // 設定是否正在往右移動
 		void SetMovingUp(bool flag);	// 設定是否正在往上移動
+		void SetJump(bool flag);
+		//void SetJump(bool flag, int initial_velocity); //設定是否跳躍及初始速度
 		void SetXY(int nx, int ny);		// 設定擦子左上角座標
 	protected:
 		CAnimation animation;		// 擦子的動畫
 		int x, y;					// 擦子左上角座標
-		bool isMovingDown;			// 是否正在往下移動
+		int initial_velocity;		// 初始速度
+		int velocity;				// 目前的速度(點/次)
 		bool isMovingLeft;			// 是否正在往左移動
 		bool isMovingRight;			// 是否正在往右移動
 		bool isMovingUp;			// 是否正在往上移動
+		bool isMovingDown;			// 是否正在往下移動
+		bool isRising;				// 是否正在上升
+		bool isFalling;				// 是否正在下降
+		bool isJumping;
 	};
 }

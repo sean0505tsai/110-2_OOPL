@@ -241,8 +241,6 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 		//background.SetTopLeft(60 ,-background.Height());
 	//background.SetTopLeft(background.Left(),background.Top()+1);
 
-	c_practice.OnMove();
-
 	// practice.SetTopLeft(10, 10);
 	if (picX <= SIZE_Y)
 	{
@@ -304,7 +302,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	for (i = 0; i < NUMBALLS; i++)	
 		ball[i].LoadBitmap();								// 載入第i個球的圖形
 	eraser.LoadBitmap();
-	background.LoadBitmap("RES/map.bmp");					// 載入背景的圖形
+	background.LoadBitmap(IDB_BACKGROUND);					// 載入背景的圖形
 
 	practice.LoadBitmap(IDB_MAIN_CHARACTER, RGB(255, 0, 0));							//練習用
 
@@ -321,7 +319,7 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	corner.ShowBitmap(background);							// 將corner貼到background
 	bball.LoadBitmap();										// 載入圖形
 	hits_left.LoadBitmap();			
-	c_practice.LoadBitMap();
+	// c_practice.LoadBitMap();
 	CAudio::Instance()->Load(AUDIO_DING,  "sounds\\ding.wav");	// 載入編號0的聲音ding.wav
 	CAudio::Instance()->Load(AUDIO_LAKE,  "sounds\\lake.mp3");	// 載入編號1的聲音lake.mp3
 	CAudio::Instance()->Load(AUDIO_NTUT,  "sounds\\ntut.mid");	// 載入編號2的聲音ntut.mid
@@ -336,6 +334,8 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_UP    = 0x26; // keyboard上箭頭
 	const char KEY_RIGHT = 0x27; // keyboard右箭頭
 	const char KEY_DOWN  = 0x28; // keyboard下箭頭
+	const char KEY_SPACE = 0x20; // keyboard空白鍵
+
 	if (nChar == KEY_LEFT)
 		eraser.SetMovingLeft(true);
 	if (nChar == KEY_RIGHT)
@@ -344,6 +344,8 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 		eraser.SetMovingUp(true);
 	if (nChar == KEY_DOWN)
 		eraser.SetMovingDown(true);
+	if (nChar == KEY_SPACE)
+		eraser.SetJump(true);
 }
 
 void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -352,6 +354,8 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_UP    = 0x26; // keyboard上箭頭
 	const char KEY_RIGHT = 0x27; // keyboard右箭頭
 	const char KEY_DOWN  = 0x28; // keyboard下箭頭
+	const char KEY_SPACE = 0x20; // keyboard空白鍵
+
 	if (nChar == KEY_LEFT)
 		eraser.SetMovingLeft(false);
 	if (nChar == KEY_RIGHT)
@@ -360,6 +364,8 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 		eraser.SetMovingUp(false);
 	if (nChar == KEY_DOWN)
 		eraser.SetMovingDown(false);
+	/*if (nChar == KEY_SPACE)
+		eraser.SetJump(false);*/
 }
 
 void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
@@ -404,7 +410,7 @@ void CGameStateRun::OnShow()
 		ball[i].OnShow();				// 貼上第i號球
 	bball.OnShow();						// 貼上彈跳的球
 	eraser.OnShow();					// 貼上擦子
-	c_practice.OnShow();
+	// c_practice.OnShow();
 	//
 	//  貼上左上及右下角落的圖
 	//
