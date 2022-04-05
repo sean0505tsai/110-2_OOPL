@@ -1,10 +1,16 @@
 # OOPL
 Game development project in OOPL course, 2022 spring
 
-未做:
-角色碰撞
-地圖物件
-地圖切換
+## TO DO LIST
 
-已做待改:
-角色Jump 待加防呆
+### 未做:
+* 角色碰撞
+* 地圖物件
+* 地圖切換
+
+### 待修:
+* 角色Jump | 待加防呆
+
+## 已完成功能
+### 角色
+* 基本跳躍
