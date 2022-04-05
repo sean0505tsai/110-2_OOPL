@@ -5,7 +5,7 @@ Game development project in OOPL course, 2022 spring
 
 ### 未做:
 #### art
-* 地圖切割
+* 地圖BMP切割
 * 角色BMP
 * 角色jump 偵測鍵盤按下時間
 
