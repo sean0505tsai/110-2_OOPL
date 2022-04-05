@@ -117,9 +117,9 @@ namespace game_framework {
 	}
 
 	void CEraser::SetJump(bool flag) {
-		if (isJumping)
-			isJumping = flag;
+		if (isJumping) {}
 		else
+			isJumping = flag;
 			velocity = initial_velocity;
 	}
 
