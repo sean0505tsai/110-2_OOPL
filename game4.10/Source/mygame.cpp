@@ -241,7 +241,8 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 		//background.SetTopLeft(60 ,-background.Height());
 	//background.SetTopLeft(background.Left(),background.Top()+1);
 
-	// practice.SetTopLeft(10, 10);
+	practice.SetTopLeft(350, 400);
+	/*
 	if (picX <= SIZE_Y)
 	{
 		picX += 5;
@@ -252,7 +253,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 		picX = picY = 0;
 	}
 	practice.SetTopLeft(picX, picY);
-
+	*/
 
 	//
 	// 移動球
