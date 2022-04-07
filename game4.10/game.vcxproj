@@ -258,7 +258,7 @@
   <ItemGroup>
     <ClCompile Include="Source\audio.cpp" />
     <ClCompile Include="Source\CBall.cpp" />
-    <ClCompile Include="Source\Cblock.cpp" />
+    <ClCompile Include="Source\CBlock.cpp" />
     <ClCompile Include="Source\CBouncingBall.cpp" />
     <ClCompile Include="Source\CCharacter.cpp" />
     <ClCompile Include="Source\CEraser.cpp" />
@@ -306,7 +306,7 @@
   <ItemGroup>
     <ClInclude Include="Source\audio.h" />
     <ClInclude Include="Source\CBall.h" />
-    <ClInclude Include="Source\Cblock.h" />
+    <ClInclude Include="Source\CBlock.h" />
     <ClInclude Include="Source\CBouncingBall.h" />
     <ClInclude Include="Source\CCharacter.h" />
     <ClInclude Include="Source\CEraser.h" />

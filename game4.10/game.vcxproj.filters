@@ -132,7 +132,7 @@
     <ClCompile Include="Source\CCharacter.cpp">
       <Filter>MyGame</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Cblock.cpp">
+    <ClCompile Include="Source\CBlock.cpp">
       <Filter>MyGame</Filter>
     </ClCompile>
   </ItemGroup>
@@ -176,7 +176,7 @@
     <ClInclude Include="Source\CCharacter.h">
       <Filter>MyGame</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Cblock.h">
+    <ClInclude Include="Source\CBlock.h">
       <Filter>MyGame</Filter>
     </ClInclude>
   </ItemGroup>

@@ -5,7 +5,7 @@
 #include "audio.h"
 #include "gamelib.h"
 #include "CEraser.h"
-#include "Cblock.h"
+#include "CBlock.h"
 namespace game_framework {
 	
 	CBlock::CBlock() {
