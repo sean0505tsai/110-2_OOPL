@@ -8,6 +8,7 @@ namespace game_framework {
 		bool HitLeft(CEraser* eraser);							// 左邊是否碰到
 		bool HitRight(CEraser* eraser);							// 右邊是否碰到
 		void LoadBitmap();										// 載入圖形
+		void OnMove();											// 設定圖形位置
 		void OnShow();											// 將圖形貼到畫面
 		void SetXY(int nx, int ny);								// 設定左上角座標
 		void Initialize();

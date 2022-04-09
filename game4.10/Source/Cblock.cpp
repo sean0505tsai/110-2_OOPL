@@ -9,7 +9,7 @@
 namespace game_framework {
 	
 	CBlock::CBlock() {
-		Initialize();
+		hit_top = hit_bottom = hit_left = hit_right = false;
 	}
 	
 	bool CBlock::HitTop(CEraser *eraser) {
@@ -32,18 +32,21 @@ namespace game_framework {
 		bmp.LoadBitmap(IDB_MAIN_CHARACTER, RGB(255, 255, 255));
 	}
 
+	void CBlock::SetXY(int nx, int ny) {
+		x1, y1 = nx, ny;
+	}
+	
+	void CBlock::OnMove() {
+		
+	}
+
 	void CBlock::OnShow() {
+		bmp.SetTopLeft(x1, y1);
 		bmp.ShowBitmap();
 	}
 
-	void CBlock::SetXY(int nx, int ny) {
-		x1, y1 = nx, ny;
-		x2 = x1 += bmp.Width();
-		y2 = x2 += bmp.Height();
-		bmp.SetTopLeft(x1, y1);
-	}
-	
 	void CBlock::Initialize() {
-
+		hit_top = hit_bottom = hit_left = hit_right = false;
+		this->SetXY(400, 400);
 	}
 }
