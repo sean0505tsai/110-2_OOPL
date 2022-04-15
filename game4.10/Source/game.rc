@@ -122,7 +122,19 @@ IDB_BLOCK00             BITMAP                  "..\\RES\\main_character\\block0
 
 IDB_CHARACTER_DEFAULT   BITMAP                  "..\\RES\\main_character\\default.bmp"
 
-IDB_BITMAP6             BITMAP                  "..\\RES\\main_character\\move_right_1.bmp"
+IDB_MOVE_RIGHT_2        BITMAP                  "..\\RES\\main_character\\move_right_2.bmp"
+
+IDB_MOVE_RIGHT_1        BITMAP                  "..\\RES\\main_character\\move_right_1.bmp"
+
+IDB_MOVE_RIGHT_3        BITMAP                  "..\\RES\\main_character\\move_right_3.bmp"
+
+IDB_MOVE_LEFT_1         BITMAP                  "..\\RES\\main_character\\move_left_1.bmp"
+
+IDB_MOVE_LEFT_2         BITMAP                  "..\\RES\\main_character\\move_left_2.bmp"
+
+IDB_MOVE_LEFT_3         BITMAP                  "..\\RES\\main_character\\move_left_3.bmp"
+
+IDB_DEFAULT_LEFT        BITMAP                  "..\\RES\\main_character\\default_left.bmp"
 
 
 /////////////////////////////////////////////////////////////////////////////

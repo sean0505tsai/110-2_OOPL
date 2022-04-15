@@ -28,12 +28,12 @@ namespace game_framework {
 
 	int CCharacter::GetX2()		// return 右下角x座標
 	{
-		return x + animation.Width();
+		return x + rightDefault.Width();
 	}
 
 	int CCharacter::GetY2()		// return 右下角y座標
 	{
-		return y + animation.Height();
+		return y + rightDefault.Height();
 	}
 
 	void CCharacter::Initialize()
@@ -43,6 +43,7 @@ namespace game_framework {
 		const int INITIAL_VELOCITY = 20;
 		x = X_POS;
 		y = Y_POS;
+		character_direction = RIGHT;
 		floor = 400;
 		isMovingLeft = isMovingRight = isJumping = isMovingDown = false;
 		initial_velocity = INITIAL_VELOCITY;
@@ -51,24 +52,30 @@ namespace game_framework {
 
 	void CCharacter::LoadBitmap()
 	{
-		
-		animation.AddBitmap(IDB_CHARACTER_DEFAULT, RGB(0, 255, 0));
-		animation.AddBitmap();
-		/*animation.AddBitmap(IDB_ERASER2, RGB(255, 255, 255));
-		animation.AddBitmap(IDB_ERASER3, RGB(255, 255, 255));
-		animation.AddBitmap(IDB_ERASER2, RGB(255, 255, 255));
-		*/
+
+		rightDefault.LoadBitmap(IDB_CHARACTER_DEFAULT, RGB(0, 255, 0));
+		leftDefault.LoadBitmap(IDB_DEFAULT_LEFT, RGB(0, 255, 0));
+		moveRight.AddBitmap(IDB_MOVE_RIGHT_1, RGB(0, 255, 0));
+		moveRight.AddBitmap(IDB_MOVE_RIGHT_2, RGB(0, 255, 0));
+		moveRight.AddBitmap(IDB_MOVE_RIGHT_3, RGB(0, 255, 0));
+		moveRight.AddBitmap(IDB_MOVE_RIGHT_2, RGB(0, 255, 0));
+
+		moveLeft.AddBitmap(IDB_MOVE_LEFT_1, RGB(0, 255, 0));
+		moveLeft.AddBitmap(IDB_MOVE_LEFT_2, RGB(0, 255, 0));
+		moveLeft.AddBitmap(IDB_MOVE_LEFT_3, RGB(0, 255, 0));
+		moveLeft.AddBitmap(IDB_MOVE_LEFT_2, RGB(0, 255, 0));
 	}
 
 	void CCharacter::OnMove()
 	{
 		const int STEP_SIZE = 2;
-		animation.OnMove();
+		moveRight.OnMove();
+		moveLeft.OnMove();
 		if (isMovingLeft)
 			x -= STEP_SIZE;
 		if (isMovingRight)
 			x += STEP_SIZE;
-		
+
 		if (isJumping) {			// 上升狀態
 			if (velocity > 0) {
 				y -= velocity;	// 當速度 > 0時，y軸上升(移動velocity個點，velocity的單位為 點/次)
@@ -95,11 +102,13 @@ namespace game_framework {
 	void CCharacter::SetMovingLeft(bool flag)
 	{
 		isMovingLeft = flag;
+		character_direction = LEFT;
 	}
 
 	void CCharacter::SetMovingRight(bool flag)
 	{
 		isMovingRight = flag;
+		character_direction = RIGHT;
 	}
 
 	void CCharacter::SetJump(bool flag)
@@ -115,7 +124,16 @@ namespace game_framework {
 
 	void CCharacter::OnShow()
 	{
-		animation.SetTopLeft(x, y);
-		animation.OnShow();
+		rightDefault.SetTopLeft(x, y);
+		leftDefault.SetTopLeft(x, y);
+		moveRight.SetTopLeft(x, y);
+		moveLeft.SetTopLeft(x, y);
+		if (isMovingRight) moveRight.OnShow();
+		else if (isMovingLeft) moveLeft.OnShow();
+		else {
+			if (character_direction == RIGHT) rightDefault.ShowBitmap();
+			else leftDefault.ShowBitmap();
+		}
+
 	}
 }

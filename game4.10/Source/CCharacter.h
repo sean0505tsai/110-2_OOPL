@@ -19,9 +19,19 @@ namespace game_framework {
 		void SetJump(bool flag);	// 設定是否跳躍及初速
 		void SetXY(int nx, int ny);		// 設定左上角座標
 	protected:
-		CAnimation animation;		// 動畫
+		CMovingBitmap rightDefault;		// 角色向右預設圖
+		CMovingBitmap leftDefault;		// 角色向左預設圖
+		CAnimation moveRight;
+		CAnimation moveLeft;
 		int x, y;					// 左上角座標
 		int floor;
+
+		enum direction_flag {
+			LEFT = 1,
+			RIGHT = 0
+		};
+
+		int character_direction;			// 角色面對方向
 		bool hitObject;				// 是否撞擊地圖物件
 		bool isMovingDown;			// 是否正在往下移動
 		bool isMovingLeft;			// 是否正在往左移動
