@@ -23,3 +23,4 @@ Game development project in OOPL course, 2022 spring
 ## 已完成功能
 ### 角色
 * 基本跳躍
+* 角色左右走動畫
