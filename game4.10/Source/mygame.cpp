@@ -388,22 +388,18 @@ void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 {
 	//eraser.SetMovingLeft(true);
 }
-
 void CGameStateRun::OnLButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 {
 	//eraser.SetMovingLeft(false);
 }
-
 void CGameStateRun::OnMouseMove(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 {
 	// 沒事。如果需要處理滑鼠移動的話，寫code在這裡
 }
-
 void CGameStateRun::OnRButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 {
 	//eraser.SetMovingRight(true);
 }
-
 void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 {
 	//eraser.SetMovingRight(false);
