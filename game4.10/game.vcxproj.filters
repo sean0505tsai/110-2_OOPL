@@ -216,5 +216,8 @@
     <Image Include="res\bitmap8.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="RES\main_character\default.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

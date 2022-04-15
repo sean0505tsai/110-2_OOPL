@@ -1,5 +1,6 @@
+#pragma once
 namespace game_framework {
-
+	
 	class CBlock {
 	public:
 		CBlock();												// Constructor
@@ -13,7 +14,7 @@ namespace game_framework {
 		void SetXY(int nx, int ny);								// 設定左上角座標
 		void Initialize();
 	protected:
-		CMovingBitmap bmp;			// 圖	
+		CMovingBitmap bmp;			// 圖
 		int x1, y1;					// 左上角座標
 		int x2, y2;					// 右下角座標
 		bool hit_left;				// 左邊是否碰撞
@@ -23,4 +24,5 @@ namespace game_framework {
 	private:
 		bool HitRectangle(int tx1, int ty1, int tx2, int ty2);	// 是否碰到參數範圍的矩形
 	};
+	
 }

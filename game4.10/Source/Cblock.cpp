@@ -5,7 +5,7 @@
 #include "audio.h"
 #include "gamelib.h"
 #include "CEraser.h"
-#include "CBlock.h"
+#include "mygame.h"
 namespace game_framework {
 	
 	CBlock::CBlock() {
@@ -29,7 +29,7 @@ namespace game_framework {
 	}
 
 	void CBlock::LoadBitmap() {
-		bmp.LoadBitmap(IDB_MAIN_CHARACTER, RGB(255, 255, 255));
+		bmp.LoadBitmap(IDB_BLOCK00, RGB(255, 255, 255));
 	}
 
 	void CBlock::SetXY(int nx, int ny) {

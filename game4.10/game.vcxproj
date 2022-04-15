@@ -336,6 +336,7 @@
     <Image Include="res\bmp00001.bmp" />
     <Image Include="res\bmp00002.bmp" />
     <Image Include="RES\main_character\block00.bmp" />
+    <Image Include="RES\main_character\default.bmp" />
     <Image Include="RES\map.bmp">
       <DeploymentContent>false</DeploymentContent>
     </Image>

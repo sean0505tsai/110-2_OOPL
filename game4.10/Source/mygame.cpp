@@ -58,6 +58,7 @@
 #include "audio.h"
 #include "gamelib.h"
 #include "mygame.h"
+#include "CBlock.h"
 
 namespace game_framework {
 /////////////////////////////////////////////////////////////////////////////
@@ -265,6 +266,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 	// 移動擦子
 	//
 	eraser.OnMove();
+	character.OnMove();
 	//
 	// 判斷擦子是否碰到球
 	//
@@ -306,6 +308,8 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	background.LoadBitmap(IDB_BACKGROUND);					// 載入背景的圖形
 
 	practice.LoadBitmap(IDB_MAIN_CHARACTER, RGB(255, 0, 0));							//練習用
+	block.LoadBitmapA();
+	character.LoadBitmap();
 
 	//
 	// 完成部分Loading動作，提高進度
@@ -329,6 +333,8 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	//
 }
 
+
+// controll main object movement
 void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 {
 	const char KEY_LEFT  = 0x25; // keyboard左箭頭
@@ -338,15 +344,19 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_SPACE = 0x20; // keyboard空白鍵
 
 	if (nChar == KEY_LEFT)
-		eraser.SetMovingLeft(true);
+		character.SetMovingLeft(true);
 	if (nChar == KEY_RIGHT)
-		eraser.SetMovingRight(true);
+		character.SetMovingRight(true);
+	/*
 	if (nChar == KEY_UP)
-		eraser.SetMovingUp(true);
+		character.SetMovingUp(true);
+		*/
+	/*
 	if (nChar == KEY_DOWN)
 		eraser.SetMovingDown(true);
+		*/
 	if (nChar == KEY_SPACE)
-		eraser.SetJump(true);
+		character.SetJump(true);
 }
 
 void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -358,17 +368,22 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	const char KEY_SPACE = 0x20; // keyboard空白鍵
 
 	if (nChar == KEY_LEFT)
-		eraser.SetMovingLeft(false);
+		character.SetMovingLeft(false);
 	if (nChar == KEY_RIGHT)
-		eraser.SetMovingRight(false);
+		character.SetMovingRight(false);
+	/*
 	if (nChar == KEY_UP)
 		eraser.SetMovingUp(false);
+		*/
+	/*
 	if (nChar == KEY_DOWN)
 		eraser.SetMovingDown(false);
+		*/
 	/*if (nChar == KEY_SPACE)
 		eraser.SetJump(false);*/
 }
 
+/*
 void CGameStateRun::OnLButtonDown(UINT nFlags, CPoint point)  // 處理滑鼠的動作
 {
 	eraser.SetMovingLeft(true);
@@ -393,6 +408,7 @@ void CGameStateRun::OnRButtonUp(UINT nFlags, CPoint point)	// 處理滑鼠的動作
 {
 	eraser.SetMovingRight(false);
 }
+*/
 
 void CGameStateRun::OnShow()
 {
@@ -419,7 +435,9 @@ void CGameStateRun::OnShow()
 	corner.ShowBitmap();
 	corner.SetTopLeft(SIZE_X-corner.Width(), SIZE_Y-corner.Height());
 	corner.ShowBitmap();
+	character.OnShow();
 
-	practice.ShowBitmap();				// 練習
+	// practice.ShowBitmap();				// 練習
+	block.OnShow();
 }
 }

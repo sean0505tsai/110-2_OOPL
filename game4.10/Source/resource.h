@@ -43,22 +43,22 @@
 #define IDB_BITMAP4                     164
 #define IDB_GAMEMAP                     164
 #define IDB_BITMAP5                     169
-#define IDB_BITMAP6                     170
-#define IDB_BITMAP7                     171
 #define IDB_BLOCK00                     171
+#define IDB_BITMAP6                     175
 #define IDC_README                      1001
 #define ID_FILE_PAUSE                   32771
 #define ID_TOGGLE_FULLSCREEN            32772
 #define ID_BUTTON_FULLSCREEN            32773
 #define ID_BUTTON_PAUSE                 32774
 #define ID_BUTTON_UNITTEST              32775
+#define IDB_CHARACTER_DEFAULT           57664
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_3D_CONTROLS                     1
-#define _APS_NEXT_RESOURCE_VALUE        173
+#define _APS_NEXT_RESOURCE_VALUE        176
 #define _APS_NEXT_COMMAND_VALUE         32776
 #define _APS_NEXT_CONTROL_VALUE         1003
 #define _APS_NEXT_SYMED_VALUE           101
