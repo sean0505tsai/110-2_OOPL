@@ -40,12 +40,13 @@ namespace game_framework {
 	{
 		const int X_POS = 280;
 		const int Y_POS = 400;
-		const int INITIAL_VELOCITY = 20;
+		const int INITIAL_VELOCITY = 0;
 		x = X_POS;
 		y = Y_POS;
 		character_direction = RIGHT;
 		floor = 400;
-		isMovingLeft = isMovingRight = isJumping = isMovingDown = false;
+		isMovingLeft = isMovingRight = isJumping = isMovingDown
+			 = isCharging = false;
 		initial_velocity = INITIAL_VELOCITY;
 		velocity = initial_velocity;
 	}
@@ -55,6 +56,7 @@ namespace game_framework {
 
 		rightDefault.LoadBitmap(IDB_CHARACTER_DEFAULT, RGB(0, 255, 0));
 		leftDefault.LoadBitmap(IDB_DEFAULT_LEFT, RGB(0, 255, 0));
+		charge.LoadBitmap(IDB_CHARACTER_CHARGE, RGB(0, 255, 0));
 		moveRight.AddBitmap(IDB_MOVE_RIGHT_1, RGB(0, 255, 0));
 		moveRight.AddBitmap(IDB_MOVE_RIGHT_2, RGB(0, 255, 0));
 		moveRight.AddBitmap(IDB_MOVE_RIGHT_3, RGB(0, 255, 0));
@@ -75,6 +77,11 @@ namespace game_framework {
 			x -= STEP_SIZE;
 		if (isMovingRight)
 			x += STEP_SIZE;
+		
+		if (isCharging) {
+			if (initial_velocity <= 20) initial_velocity++;
+			velocity = initial_velocity;
+		}
 
 		if (isJumping) {			// ¤W¤Éª¬ºA
 			if (velocity > 0) {
@@ -111,6 +118,10 @@ namespace game_framework {
 		character_direction = RIGHT;
 	}
 
+	void CCharacter::JumpCharge(bool flag) {
+		isCharging = flag;
+	}
+
 	void CCharacter::SetJump(bool flag)
 	{
 		velocity = initial_velocity;
@@ -128,7 +139,9 @@ namespace game_framework {
 		leftDefault.SetTopLeft(x, y);
 		moveRight.SetTopLeft(x, y);
 		moveLeft.SetTopLeft(x, y);
-		if (isMovingRight) moveRight.OnShow();
+		charge.SetTopLeft(x, y);
+		if (isCharging) charge.ShowBitmap();
+		else if (isMovingRight) moveRight.OnShow();
 		else if (isMovingLeft) moveLeft.OnShow();
 		else {
 			if (character_direction == RIGHT) rightDefault.ShowBitmap();

@@ -339,8 +339,9 @@ void CGameStateRun::OnKeyDown(UINT nChar, UINT nRepCnt, UINT nFlags)
 	if (nChar == KEY_DOWN)
 		eraser.SetMovingDown(true);
 		*/
+
 	if (nChar == KEY_SPACE)
-		character.SetJump(true);
+		character.JumpCharge(true);
 }
 
 void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
@@ -363,8 +364,9 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	if (nChar == KEY_DOWN)
 		eraser.SetMovingDown(false);
 		*/
-	/*if (nChar == KEY_SPACE)
-		eraser.SetJump(false);*/
+	if (nChar == KEY_SPACE)
+		character.JumpCharge(false);
+		character.SetJump(true);
 }
 
 

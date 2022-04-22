@@ -136,6 +136,8 @@ IDB_MOVE_LEFT_3         BITMAP                  "..\\RES\\main_character\\move_l
 
 IDB_DEFAULT_LEFT        BITMAP                  "..\\RES\\main_character\\default_left.bmp"
 
+IDB_CHARACTER_CHARGE    BITMAP                  "..\\RES\\main_character\\jump_1.bmp"
+
 
 /////////////////////////////////////////////////////////////////////////////
 //

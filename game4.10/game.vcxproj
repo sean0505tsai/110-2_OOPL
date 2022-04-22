@@ -339,6 +339,7 @@
     <Image Include="RES\main_character\block00.bmp" />
     <Image Include="RES\main_character\default.bmp" />
     <Image Include="RES\main_character\default_left.bmp" />
+    <Image Include="RES\main_character\jump_1.bmp" />
     <Image Include="RES\main_character\move_left_1.bmp" />
     <Image Include="RES\main_character\move_left_2.bmp" />
     <Image Include="RES\main_character\move_left_3.bmp" />
