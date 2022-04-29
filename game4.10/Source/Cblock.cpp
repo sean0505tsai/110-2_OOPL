@@ -6,6 +6,7 @@
 #include "gamelib.h"
 #include "CEraser.h"
 #include "CBlock.h"
+#include "CCharacter.h"
 
 namespace game_framework {
 	

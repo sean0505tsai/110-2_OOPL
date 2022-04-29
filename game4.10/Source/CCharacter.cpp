@@ -39,12 +39,12 @@ namespace game_framework {
 	void CCharacter::Initialize()
 	{
 		const int X_POS = 280;
-		const int Y_POS = 400;
+		const int Y_POS = 380;
 		const int INITIAL_VELOCITY = 0;
 		x = X_POS;
 		y = Y_POS;
 		character_direction = RIGHT;
-		floor = 400;
+		floor = 380;
 		isMovingLeft = isMovingRight = isJumping = isMovingDown
 			 = isCharging = false;
 		initial_velocity = INITIAL_VELOCITY;
