@@ -98,9 +98,10 @@ namespace game_framework {
 	private:
 		const int		NUMBALLS;	// 球的總數
 		int time;					// 紀錄按鍵壓下時間
+		CMovingBitmap	map;
 		CMovingBitmap	background;	// 背景圖
 		CMovingBitmap	help;		// 說明圖
-		CBall			*ball;		// 球的陣列
+		// CBall			*ball;		// 球的陣列
 		CMovingBitmap	corner;		// 角落圖
 		CEraser			eraser;		// 拍子
 		CInteger		hits_left;	// 剩下的撞擊數

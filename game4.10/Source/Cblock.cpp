@@ -5,7 +5,8 @@
 #include "audio.h"
 #include "gamelib.h"
 #include "CEraser.h"
-#include "mygame.h"
+#include "CBlock.h"
+
 namespace game_framework {
 	
 	CBlock::CBlock() {
@@ -29,7 +30,7 @@ namespace game_framework {
 	}
 
 	void CBlock::LoadBitmap() {
-		bmp.LoadBitmap(IDB_BLOCK00);
+		pic.LoadBitmap(IDB_BLOCK01);
 	}
 
 	void CBlock::SetXY(int nx, int ny) {
@@ -41,12 +42,12 @@ namespace game_framework {
 	}
 
 	void CBlock::OnShow() {
-		bmp.SetTopLeft(x1, y1);
-		bmp.ShowBitmap();
+		pic.SetTopLeft(x1, y1);
+		pic.ShowBitmap();
 	}
 
 	void CBlock::Initialize() {
 		hit_top = hit_bottom = hit_left = hit_right = false;
-		this->SetXY(400, 400);
+		this->SetXY(300, 400);
 	}
 }

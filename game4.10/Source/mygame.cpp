@@ -58,7 +58,6 @@
 #include "audio.h"
 #include "gamelib.h"
 #include "mygame.h"
-#include "CBlock.h"
 
 namespace game_framework {
 /////////////////////////////////////////////////////////////////////////////
@@ -192,13 +191,13 @@ void CGameStateOver::OnShow()
 CGameStateRun::CGameStateRun(CGame *g)
 : CGameState(g), NUMBALLS(28)
 {
-	ball = new CBall [NUMBALLS];
+	// ball = new CBall [NUMBALLS];
 	picX = picY = 0;
 }
 
 CGameStateRun::~CGameStateRun()
 {
-	delete [] ball;
+	// delete [] ball;
 }
 
 void CGameStateRun::OnBeginState()
@@ -212,14 +211,17 @@ void CGameStateRun::OnBeginState()
 	const int BACKGROUND_X =0;
 	const int BACKGROUND_Y = 0;
 	const int ANIMATION_SPEED = 15;
-	for (int i = 0; i < NUMBALLS; i++) {				// 設定球的起始座標
+
+	/*for (int i = 0; i < NUMBALLS; i++) {				// 設定球的起始座標
 		int x_pos = i % BALL_PER_ROW;
 		int y_pos = i / BALL_PER_ROW;
 		ball[i].SetXY(x_pos * BALL_GAP + BALL_XY_OFFSET, y_pos * BALL_GAP + BALL_XY_OFFSET);
 		ball[i].SetDelay(x_pos);
 		ball[i].SetIsAlive(true);
-	}
+	}*/
+
 	eraser.Initialize();
+
 	background.SetBottomLeft(BACKGROUND_X,BACKGROUND_Y);				// 設定背景的起始座標
 	help.SetTopLeft(0, SIZE_Y - help.Height());			// 設定說明圖的起始座標
 	hits_left.SetInteger(HITS_LEFT);					// 指定剩下的撞擊數
@@ -245,18 +247,18 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 
 	//
 	// 移動球
-	//
+	/*
 	int i;
 	for (i=0; i < NUMBALLS; i++)
 		ball[i].OnMove();
-	//
+	*/
 	// 移動擦子
 	//
 	eraser.OnMove();
 	character.OnMove();
 	//
 	// 判斷擦子是否碰到球
-	//
+	/*
 	for (i=0; i < NUMBALLS; i++)
 		if (ball[i].IsAlive() && ball[i].HitEraser(&eraser)) {
 			ball[i].SetIsAlive(false);
@@ -271,7 +273,7 @@ void CGameStateRun::OnMove()							// 移動遊戲元素
 				GotoGameState(GAME_STATE_OVER);
 			}
 		}
-	//
+	*/
 	// 移動彈跳的球
 	//
 	bball.OnMove();
@@ -288,12 +290,13 @@ void CGameStateRun::OnInit()  								// 遊戲的初值及圖形設定
 	// 開始載入資料
 	//
 	
+	/*
 	int i;
 	for (i = 0; i < NUMBALLS; i++)	
 		ball[i].LoadBitmap();								// 載入第i個球的圖形
+	*/
 	eraser.LoadBitmap();
-	background.LoadBitmap(IDB_BACKGROUND);					// 載入背景的圖形
-	block.LoadBitmap();
+	background.LoadBitmap(IDB_MAP01);					// 載入背景的圖形
 	character.LoadBitmap();
 
 	//
@@ -364,9 +367,10 @@ void CGameStateRun::OnKeyUp(UINT nChar, UINT nRepCnt, UINT nFlags)
 	if (nChar == KEY_DOWN)
 		eraser.SetMovingDown(false);
 		*/
-	if (nChar == KEY_SPACE)
+	if (nChar == KEY_SPACE) {
 		character.JumpCharge(false);
 		character.SetJump(true);
+	}
 }
 
 
@@ -405,10 +409,11 @@ void CGameStateRun::OnShow()
 	background.ShowBitmap();			// 貼上背景圖
 	help.ShowBitmap();					// 貼上說明圖
 	hits_left.ShowBitmap();
-	for (int i=0; i < NUMBALLS; i++)
+	/*for (int i = 0; i < NUMBALLS; i++)
 		ball[i].OnShow();				// 貼上第i號球
+	*/
 	bball.OnShow();						// 貼上彈跳的球
-	eraser.OnShow();					// 貼上擦子
+	// eraser.OnShow();					// 貼上擦子
 
 	corner.SetTopLeft(0,0);
 	corner.ShowBitmap();
@@ -416,6 +421,6 @@ void CGameStateRun::OnShow()
 	corner.ShowBitmap();
 	character.OnShow();
 
-	block.OnShow();
+
 }
 }

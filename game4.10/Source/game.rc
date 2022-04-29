@@ -112,12 +112,6 @@ IDB_GREEN               BITMAP                  "..\\res\\bmp00001.bmp"
 
 IDB_BLUE                BITMAP                  "..\\res\\bitmap4.bmp"
 
-IDB_BITMAP3             BITMAP                  "..\\res\\bmp00002.bmp"
-
-IDB_GAMEMAP             BITMAP                  "..\\RES\\map.bmp"
-
-IDB_BITMAP5             BITMAP                  "..\\RES\\map.bmp"
-
 IDB_BLOCK00             BITMAP                  "..\\RES\\main_character\\block00.bmp"
 
 IDB_CHARACTER_DEFAULT   BITMAP                  "..\\RES\\main_character\\default.bmp"
@@ -137,6 +131,10 @@ IDB_MOVE_LEFT_3         BITMAP                  "..\\RES\\main_character\\move_l
 IDB_DEFAULT_LEFT        BITMAP                  "..\\RES\\main_character\\default_left.bmp"
 
 IDB_CHARACTER_CHARGE    BITMAP                  "..\\RES\\main_character\\jump_1.bmp"
+
+IDB_BLOCK01             BITMAP                  "C:\\Users\\user\\Documents\\Code\\OOPL\\110-2_OOPL\\game4.10\\RES\\block\\block01.bmp"
+
+IDB_MAP01               BITMAP                  "C:\\Users\\user\\Documents\\Code\\OOPL\\110-2_OOPL\\game4.10\\RES\\block\\map01.bmp"
 
 
 /////////////////////////////////////////////////////////////////////////////

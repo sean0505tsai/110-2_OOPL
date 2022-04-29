@@ -186,19 +186,10 @@
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\bitmap3.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\bmp00001.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
     <Image Include="RES\3005630-middle.bmp">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="res\bitmap4.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\bmp00002.bmp">
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="RES\map.bmp">
@@ -244,6 +235,15 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="RES\main_character\jump_1.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\block\block01.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="RES\block\map01.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\bmp00001.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

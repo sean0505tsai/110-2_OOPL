@@ -1,4 +1,5 @@
 #pragma once
+
 namespace game_framework {
 	
 	class CBlock {
@@ -14,7 +15,8 @@ namespace game_framework {
 		void SetXY(int nx, int ny);								// 設定左上角座標
 		void Initialize();
 	protected:
-		CMovingBitmap bmp;			// 圖
+		CMovingBitmap block;			// 圖
+		CMovingBitmap pic;
 		int x1, y1;					// 左上角座標
 		int x2, y2;					// 右下角座標
 		bool hit_left;				// 左邊是否碰撞

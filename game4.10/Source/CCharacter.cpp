@@ -79,8 +79,7 @@ namespace game_framework {
 			x += STEP_SIZE;
 		
 		if (isCharging) {
-			if (initial_velocity <= 20) initial_velocity++;
-			velocity = initial_velocity;
+			if (initial_velocity <= 15) initial_velocity++;
 		}
 
 		if (isJumping) {			// 上升狀態
@@ -95,6 +94,7 @@ namespace game_framework {
 		}
 		else {				// 下降狀態
 			if (y < floor - 1) {  // 當y座標還沒碰到地板
+				initial_velocity = 0;
 				y += velocity;	// y軸下降(移動velocity個點，velocity的單位為 點/次)
 				velocity++;		// 受重力影響，下次的下降速度增加
 			}
@@ -107,14 +107,14 @@ namespace game_framework {
 	}
 
 	void CCharacter::SetMovingLeft(bool flag)
-	{
-		isMovingLeft = flag;
+	{	
+		if(! isCharging) isMovingLeft = flag;
 		character_direction = LEFT;
 	}
 
 	void CCharacter::SetMovingRight(bool flag)
 	{
-		isMovingRight = flag;
+		if(! isCharging) isMovingRight = flag;
 		character_direction = RIGHT;
 	}
 
@@ -125,7 +125,7 @@ namespace game_framework {
 	void CCharacter::SetJump(bool flag)
 	{
 		velocity = initial_velocity;
-		isJumping = flag;
+		if (velocity != 0) isJumping = flag;
 	}
 
 	void CCharacter::SetXY(int nx, int ny)
