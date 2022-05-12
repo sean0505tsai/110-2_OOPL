@@ -246,47 +246,5 @@
     <Image Include="res\bmp00001.bmp">
       <Filter>Resource Files</Filter>
     </Image>
-    <Image Include="res\bmp00002.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="RES\main_character\rise_left.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="res\bitmap3.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="Source\RES\main_character\rise_left.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="RES\main_character\after_hit_left.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="RES\main_character\after_hit_right_2.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="RES\main_character\fall_left_1.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="RES\main_character\fall_right_1.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="RES\main_character\rise_right.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="RES\main_character\after_hit_right.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="RES\main_character\fall_left.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="RES\main_character\fall_right.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="RES\map01.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
-    <Image Include="RES\block\map.bmp">
-      <Filter>Resource Files</Filter>
-    </Image>
   </ItemGroup>
 </Project>
