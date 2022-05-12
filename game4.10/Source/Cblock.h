@@ -1,12 +1,14 @@
+#pragma once
+
 namespace game_framework {
 	
 	class CBlock {
 	public:
 		CBlock();												// Constructor
-		bool HitTop(CPlayer* player);							// 頂端是否碰到擦子
-		bool HitBottom(CPlayer* player);						// 底部是否碰到
-		bool HitLeft(CPlayer* player);							// 左邊是否碰到
-		bool HitRight(CPlayer* player);							// 右邊是否碰到
+		bool HitTop(CEraser* eraser);							// 頂端是否碰到擦子
+		bool HitBottom(CEraser* eraser);						// 底部是否碰到
+		bool HitLeft(CEraser* eraser);							// 左邊是否碰到
+		bool HitRight(CEraser* eraser);							// 右邊是否碰到
 		void LoadBitmap();										// 載入圖形
 		void OnMove();											// 設定圖形位置
 		void OnShow();											// 將圖形貼到畫面
