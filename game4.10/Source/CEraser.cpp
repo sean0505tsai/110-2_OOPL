@@ -6,73 +6,143 @@
 #include "gamelib.h"
 #include "CEraser.h"
 
+/*######地圖座標######
+*					x
+*	  - . . . . . . +
+*	  . . . . . . .
+*	  . . . . . . . 
+*	  . . . . . . . 
+*	  . . . . . . .
+*	  . . . . . . .
+*	y +
+*/
+
 namespace game_framework {
 	/////////////////////////////////////////////////////////////////////////////
 	// CEraser: Eraser class
 	/////////////////////////////////////////////////////////////////////////////
 
-	CEraser::CEraser()
+	CPlayer::CPlayer()	// Constructor
 	{
 		Initialize();
 	}
 
-	int CEraser::GetX1()
+	int CPlayer::GetX1()		// return 左上角x座標
 	{
 		return x;
 	}
 
-	int CEraser::GetY1()
+	int CPlayer::GetY1()		//return 左上角y座標
 	{
 		return y;
 	}
 
-	int CEraser::GetX2()
+	int CPlayer::GetX2()		// return 右下角x座標
 	{
-		return x + animation.Width();
+		return x + rightDefault.Width();
 	}
 
-	int CEraser::GetY2()
+	int CPlayer::GetY2()		// return 右下角y座標
 	{
-		return y + animation.Height();
+		return y + rightDefault.Height();
 	}
 
-	void CEraser::Initialize()
+	void CPlayer::Initialize()
 	{
 		const int X_POS = 280;
-		const int Y_POS = 400;
-		const int INITIAL_VELOCITY = 20;
+		const int Y_POS = 380;
+		const int INITIAL_VELOCITY = 0;
 		x = X_POS;
 		y = Y_POS;
-		isMovingLeft = isMovingRight = isMovingUp = isMovingDown = false;
-		isJumping = isRising = isFalling = false;
+		character_direction = RIGHT;
+		floor = 380;
+
+		isMovingLeft = isMovingRight = isRising = isFalling
+			= isCharging = false;
+
+		topCollision = leftCollision = rightCollision = false;
+		bottomCollision = true;
+
 		initial_velocity = INITIAL_VELOCITY;
-		velocity = initial_velocity;
+		vertical_velocity = initial_velocity;
+		horizontal_velocity = initial_velocity;
 	}
 
-	void CEraser::LoadBitmap()
+	void CPlayer::LoadBitmap()
 	{
-		animation.AddBitmap(IDB_ERASER1, RGB(255, 255, 255));
-		animation.AddBitmap(IDB_ERASER2, RGB(255, 255, 255));
-		animation.AddBitmap(IDB_ERASER3, RGB(255, 255, 255));
-		animation.AddBitmap(IDB_ERASER2, RGB(255, 255, 255));
-		animation.AddBitmap(IDB_BLOCK01);
+
+		rightDefault.LoadBitmap(IDB_CHARACTER_DEFAULT, RGB(0, 255, 0));
+		leftDefault.LoadBitmap(IDB_DEFAULT_LEFT, RGB(0, 255, 0));
+		charge.LoadBitmap(IDB_CHARACTER_CHARGE, RGB(0, 255, 0));
+		moveRight.AddBitmap(IDB_MOVE_RIGHT_1, RGB(0, 255, 0));
+		moveRight.AddBitmap(IDB_MOVE_RIGHT_2, RGB(0, 255, 0));
+		moveRight.AddBitmap(IDB_MOVE_RIGHT_3, RGB(0, 255, 0));
+		moveRight.AddBitmap(IDB_MOVE_RIGHT_2, RGB(0, 255, 0));
+
+		moveLeft.AddBitmap(IDB_MOVE_LEFT_1, RGB(0, 255, 0));
+		moveLeft.AddBitmap(IDB_MOVE_LEFT_2, RGB(0, 255, 0));
+		moveLeft.AddBitmap(IDB_MOVE_LEFT_3, RGB(0, 255, 0));
+		moveLeft.AddBitmap(IDB_MOVE_LEFT_2, RGB(0, 255, 0));
 	}
 
-	void CEraser::OnMove()
+	void CPlayer::OnMove()
 	{
-		int floor = 400;
+		if (y <= 380) bottomCollision = true;
+
 		const int STEP_SIZE = 2;
+		moveRight.OnMove();
+		moveLeft.OnMove();
+		
 
-		animation.OnMove();
+		if (isFalling) {						// 下降狀態
+			if (!bottomCollision)				// 尚未碰到地板
+			{				
+				y += vertical_velocity;
+				if (vertical_velocity < 20) vertical_velocity++;
+			}
+			else if (bottomCollision)			// 碰到地板
+			{
+				vertical_velocity = 0;
+				initial_velocity = 0;
+				isFalling = false;
+			}
+		}
+		
+		if (isRising) {			// 上升狀態
+			if (!topCollision) {
+
+				if (vertical_velocity != 0) {			// 上升中
+					y -= vertical_velocity;
+					vertical_velocity--;
+				}
+				else			// 到達頂點
+				{
+					isRising = false;			// 開始下墜
+					isFalling = true;
+				}
+
+			}
+			else{		// 頂部碰撞 開始下墜
+				vertical_velocity = 0;
+				isRising = false;
+				isFalling = true;
+			}
+		}
+		
+		if (isCharging) {		// 蓄力狀態
+			if (initial_velocity <= 20) initial_velocity++;
+			SetJump();
+		}
+
+		
+		// 原地狀態
 		if (isMovingLeft)
 			x -= STEP_SIZE;
 		if (isMovingRight)
 			x += STEP_SIZE;
-		if (isMovingUp)
-			y -= STEP_SIZE;
-		if (isMovingDown)
-			y += STEP_SIZE;
+		
 
+		/*
 		if (isJumping) {			// 上升狀態
 			if (velocity > 0) {
 				y -= velocity;	// 當速度 > 0時，y軸上升(移動velocity個點，velocity的單位為 點/次)
@@ -85,6 +155,7 @@ namespace game_framework {
 		}
 		else {				// 下降狀態
 			if (y < floor - 1) {  // 當y座標還沒碰到地板
+				initial_velocity = 0;
 				y += velocity;	// y軸下降(移動velocity個點，velocity的單位為 點/次)
 				velocity++;		// 受重力影響，下次的下降速度增加
 			}
@@ -94,52 +165,54 @@ namespace game_framework {
 				isJumping = false;
 			}
 		}
+		*/
 	}
-	
 
-	void CEraser::SetMovingDown(bool flag)
+	void CPlayer::SetMovingLeft(bool flag)
 	{
-		isMovingDown = flag;
+		if (!isCharging) isMovingLeft = flag;
+		character_direction = LEFT;
 	}
 
-	void CEraser::SetMovingLeft(bool flag)
+	void CPlayer::SetMovingRight(bool flag)
 	{
-		isMovingLeft = flag;
+		if (!isCharging && !isRising && !isFalling)
+		{
+			isMovingRight = flag;
+			character_direction = RIGHT;
+		}
+	}
+	void CPlayer::JumpCharge(bool flag) {
+		isCharging = flag;
 	}
 
-	void CEraser::SetMovingRight(bool flag)
+	void CPlayer::SetJump()
 	{
-		isMovingRight = flag;
+		if (!isFalling && !isRising) {
+			isRising = true;
+			vertical_velocity = initial_velocity;
+		}
 	}
 
-	void CEraser::SetMovingUp(bool flag)
-	{
-		isMovingUp = flag;
-	}
-
-	void CEraser::SetJump(bool flag) {
-		if (isJumping) {}
-		else
-			isJumping = flag;
-			velocity = initial_velocity;
-	}
-
-
-	/*
-	void CEraser::SetJump(bool flag, int initial_velocity) {
-		isRising = flag;
-		this->initial_velocity = initial_velocity;
-	}
-	*/
-
-	void CEraser::SetXY(int nx, int ny)
+	void CPlayer::SetXY(int nx, int ny)
 	{
 		x = nx; y = ny;
 	}
 
-	void CEraser::OnShow()
+	void CPlayer::OnShow()
 	{
-		animation.SetTopLeft(x, y);
-		animation.OnShow();
+		rightDefault.SetTopLeft(x, y);
+		leftDefault.SetTopLeft(x, y);
+		moveRight.SetTopLeft(x, y);
+		moveLeft.SetTopLeft(x, y);
+		charge.SetTopLeft(x, y);
+		if (isCharging) charge.ShowBitmap();
+		else if (isMovingRight) moveRight.OnShow();
+		else if (isMovingLeft) moveLeft.OnShow();
+		else {
+			if (character_direction == RIGHT) rightDefault.ShowBitmap();
+			else leftDefault.ShowBitmap();
+		}
+
 	}
 }

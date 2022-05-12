@@ -132,9 +132,25 @@ IDB_DEFAULT_LEFT        BITMAP                  "..\\RES\\main_character\\defaul
 
 IDB_CHARACTER_CHARGE    BITMAP                  "..\\RES\\main_character\\jump_1.bmp"
 
-IDB_BLOCK01             BITMAP                  "C:\\Users\\user\\Documents\\Code\\OOPL\\110-2_OOPL\\game4.10\\RES\\block\\block01.bmp"
+IDB_BLOCK01             BITMAP                  "..\\RES\\block\\block01.bmp"
 
-IDB_MAP01               BITMAP                  "C:\\Users\\user\\Documents\\Code\\OOPL\\110-2_OOPL\\game4.10\\RES\\block\\map01.bmp"
+IDB_MAP01               BITMAP                  "..\\RES\\block\\map01.bmp"
+
+IDB_AFTER_HIT_LEFT      BITMAP                  "..\\RES\\main_character\\after_hit_left.bmp"
+
+IDB_AFTER_HIT_RIGHT     BITMAP                  "..\\RES\\main_character\\after_hit_right.bmp"
+
+IDB_FALL_LEFT           BITMAP                  "..\\RES\\main_character\\fall_left.bmp"
+
+IDB_FALL_RIGHT          BITMAP                  "..\\RES\\main_character\\fall_right.bmp"
+
+IDB_RISE_LEFT           BITMAP                  "..\\RES\\main_character\\rise_left.bmp"
+
+IDB_RISE_RIGHT          BITMAP                  "..\\RES\\main_character\\rise_right.bmp"
+
+IDB_MAP001              BITMAP                  "..\\RES\\map01.bmp"
+
+IDB_MAP                 BITMAP                  "..\\RES\\block\\map.bmp"
 
 
 /////////////////////////////////////////////////////////////////////////////

@@ -14,19 +14,19 @@ namespace game_framework {
 		Initialize();
 	}
 	
-	bool CBlock::HitTop(CEraser *eraser) {
+	bool CBlock::HitTop(CPlayer* player) {
 		return hit_top;
 	}
 
-	bool CBlock::HitBottom(CEraser* eraser) {
+	bool CBlock::HitBottom(CPlayer* player) {
 		return hit_bottom;
 	}
 
-	bool CBlock::HitLeft(CEraser* eraser) {
+	bool CBlock::HitLeft(CPlayer* player) {
 		return hit_left;
 	}
 
-	bool CBlock::HitRight(CEraser* eraser) {
+	bool CBlock::HitRight(CPlayer* player) {
 		return hit_right;
 	}
 

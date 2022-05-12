@@ -5,36 +5,57 @@ namespace game_framework {
 	// 看懂就可以改寫成自己的程式了
 	/////////////////////////////////////////////////////////////////////////////
 
-	class CEraser
+	class CPlayer
 	{
 	public:
-		CEraser();
-		int  GetX1();					// 擦子左上角 x 座標
-		int  GetY1();					// 擦子左上角 y 座標
-		int  GetX2();					// 擦子右下角 x 座標
-		int  GetY2();					// 擦子右下角 y 座標
+		CPlayer();
+		int  GetX1();					// 左上角 x 座標
+		int  GetY1();					// 左上角 y 座標
+		int  GetX2();					// 右下角 x 座標
+		int  GetY2();					// 右下角 y 座標
 		void Initialize();				// 設定擦子為初始值
 		void LoadBitmap();				// 載入圖形
-		void OnMove();					// 移動擦子
-		void OnShow();					// 將擦子圖形貼到畫面
-		void SetMovingDown(bool flag);	// 設定是否正在往下移動
+		void OnMove();					// 移動
+		void OnShow();					// 將圖形貼到畫面
 		void SetMovingLeft(bool flag);	// 設定是否正在往左移動
 		void SetMovingRight(bool flag); // 設定是否正在往右移動
-		void SetMovingUp(bool flag);	// 設定是否正在往上移動
-		void SetJump(bool flag);
-		//void SetJump(bool flag, int initial_velocity); //設定是否跳躍及初始速度
-		void SetXY(int nx, int ny);		// 設定擦子左上角座標
+		void SetJump();					// 設定跳躍及初速
+		void JumpCharge(bool flag);		// 跳躍蓄力
+		void SetXY(int nx, int ny);		// 設定左上角座標
 	protected:
-		CAnimation animation;		// 擦子的動畫
-		int x, y;					// 擦子左上角座標
-		int initial_velocity;		// 初始速度
-		int velocity;				// 目前的速度(點/次)
+		CMovingBitmap rightDefault;		// 角色向右預設圖
+		CMovingBitmap leftDefault;		// 角色向左預設圖
+		CMovingBitmap leftFallHitGround;	//	高處落下撞擊地面(左)
+		CMovingBitmap rightFallHitGround;	//	高處落下撞擊地面(右)
+		CMovingBitmap leftRising;
+		CMovingBitmap rightRising;
+		CMovingBitmap leftFalling;
+		CMovingBitmap rightFalling;
+		CMovingBitmap charge;
+		CAnimation moveRight;
+		CAnimation moveLeft;
+		int x, y;					// 左上角座標
+		int floor;
+
+		enum direction_flag {
+			LEFT = 1,
+			RIGHT = 0
+		};
+
+		int character_direction;			// 角色面對方向
+		bool topCollision;				// 上方是否碰撞
+		bool bottomCollision;				// 下方是否碰撞
+		bool leftCollision;					// 左方是否碰撞
+		bool rightCollision;				// 右方是否碰撞
+
 		bool isMovingLeft;			// 是否正在往左移動
 		bool isMovingRight;			// 是否正在往右移動
-		bool isMovingUp;			// 是否正在往上移動
-		bool isMovingDown;			// 是否正在往下移動
-		bool isRising;				// 是否正在上升
-		bool isFalling;				// 是否正在下降
-		bool isJumping;
+		bool isRising;				// 是否上升
+		bool isFalling;				// 是否下墜
+
+		bool isCharging;			// 是否正在蓄力
+		int initial_velocity;		// 跳躍初速
+		int vertical_velocity;		// 縱向速度
+		int horizontal_velocity;	// 橫向速度
 	};
 }
