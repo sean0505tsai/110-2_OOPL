@@ -15,10 +15,11 @@ namespace game_framework {
 	CBall::CBall()
 	{
 		is_alive = true;
-		x = y = dx = dy = index = delay_counter = 0;
+		dx = dy = index = delay_counter = 0;
+		x, y = 200;
 	}
 
-	bool CBall::HitEraser(CEraser *eraser)
+	bool CBall::HitEraser(CPlayer *eraser)
 	{
 		// 檢測擦子所構成的矩形是否碰到球
 		return HitRectangle(eraser->GetX1(), eraser->GetY1(),
@@ -44,29 +45,13 @@ namespace game_framework {
 
 	void CBall::LoadBitmap()
 	{
-		bmp.LoadBitmap(IDB_BALL, RGB(0, 0, 0));			// 載入球的圖形
-		bmp_center.LoadBitmap(IDB_CENTER, RGB(0, 0, 0));	// 載入球圓心的圖形
+		bmp.LoadBitmap(IDB_ERASER1);			// 載入球的圖形
+		// bmp_center.LoadBitmap(IDB_CENTER, RGB(0, 0, 0));	// 載入球圓心的圖形
 	}
 
 	void CBall::OnMove()
 	{
-		if (!is_alive)
-			return;
-		delay_counter--;
-		if (delay_counter < 0) {
-			delay_counter = delay;
-			//
-			// 計算球向對於圓心的位移量dx, dy
-			//
-			const int STEPS = 18;
-			static const int DIFFX[] = { 35, 32, 26, 17, 6, -6, -17, -26, -32, -34, -32, -26, -17, -6, 6, 17, 26, 32, };
-			static const int DIFFY[] = { 0, 11, 22, 30, 34, 34, 30, 22, 11, 0, -11, -22, -30, -34, -34, -30, -22, -11, };
-			index++;
-			if (index >= STEPS)
-				index = 0;
-			dx = DIFFX[index];
-			dy = DIFFY[index];
-		}
+		
 	}
 
 	void CBall::SetDelay(int d)
@@ -86,11 +71,6 @@ namespace game_framework {
 
 	void CBall::OnShow()
 	{
-		if (is_alive) {
-			bmp.SetTopLeft(x + dx, y + dy);
-			bmp.ShowBitmap();
-			bmp_center.SetTopLeft(x, y);
-			bmp_center.ShowBitmap();
-		}
+		bmp.SetTopLeft(x, y);
 	}
 }

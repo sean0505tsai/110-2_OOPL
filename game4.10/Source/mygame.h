@@ -52,7 +52,8 @@ namespace game_framework {
 	enum AUDIO_ID {				// 定義各種音效的編號
 		AUDIO_DING,				// 0
 		AUDIO_LAKE,				// 1
-		AUDIO_NTUT				// 2
+		AUDIO_NTUT,				// 2
+		AUDIO_MENU				// 3
 	};
 
 
@@ -97,15 +98,13 @@ namespace game_framework {
 		void OnShow();									// 顯示這個狀態的遊戲畫面
 	private:
 		const int		NUMBALLS;	// 球的總數
-		int time;					// 紀錄按鍵壓下時間
 		CMovingBitmap	map;
 		CMovingBitmap	background;	// 背景圖
 		CMovingBitmap	help;		// 說明圖
-		// CBall			*ball;		// 球的陣列
+		CBall			ball;		// 球的陣列
 		CMovingBitmap	corner;		// 角落圖
-		CEraser			eraser;		// 拍子
+		CPlayer			player;		// 角色
 		CInteger		hits_left;	// 剩下的撞擊數
-		CBouncingBall   bball;		// 反覆彈跳的球
 		CBlock			block;
 		CCharacter		character;
 		int				picX, picY;
